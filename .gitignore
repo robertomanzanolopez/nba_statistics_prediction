@@ -1,5 +1,6 @@
 .ipynb_checkpoints/
 games.csv
+teams.csv
 df_all_rs.csv
 df_all_metrics.csv
 metrics_results_kn.csv
