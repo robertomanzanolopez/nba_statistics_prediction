@@ -2,6 +2,7 @@
 games.csv
 teams.csv
 df_complete.csv
+__pycache__/
 df_merged_renamed_droped_sorted_rs.csv
 df_merged_renamed_droped_sorted_2_rs.csv
 df_all_rs.csv
