@@ -1,9 +1,26 @@
+import pandas as pd
+import numpy as np
+
 # Funciones para la creacoin de los datos
-def porcentaje_victorias_home_team(game_id):
-    home_team = int(df_rs_03.query("GAME_ID == " + str(game_id))['HOME_TEAM_ID'])
-    visitor_team = int(df_rs_03.query("GAME_ID == " + str(game_id))['VISITOR_TEAM_ID'])
+
+def home_visitor_df(game_id):
+    df = pd.read_csv('df_merged_renamed_droped_sorted_2_rs.csv')
+    df = df.drop('Unnamed: 0', axis=1)
     
-    df_p_v_a = df_rs_03[(df_rs_03['GAME_ID'] <= game_id)]
+    home_team = int(df.query("GAME_ID == " + str(game_id))['HOME_TEAM_ID'])
+    visitor_team = int(df.query("GAME_ID == " + str(game_id))['VISITOR_TEAM_ID'])
+    season = int(df.query("GAME_ID == " + str(game_id))['SEASON'])
+    df_aux = df[(df['SEASON'] == season)]    
+    
+    return home_team, visitor_team, df_aux
+
+
+def porcentaje_victorias_home_team(game_id):
+    #home_team = int(df_rs_03.query("GAME_ID == " + str(game_id))['HOME_TEAM_ID'])
+    #visitor_team = int(df_rs_03.query("GAME_ID == " + str(game_id))['VISITOR_TEAM_ID'])
+    #df_p_v_a = df_rs_03[(df_rs_03['GAME_ID'] <= game_id)]
+                 
+    home_team, visitor_team, df_p_v_a = home_visitor_df(game_id)
     
     df1h = df_p_v_a[(df_p_v_a['HOME_TEAM_ID'] == home_team)]
     df2h = df_p_v_a[(df_p_v_a['VISITOR_TEAM_ID'] == home_team)]
@@ -24,10 +41,7 @@ def porcentaje_victorias_home_team(game_id):
 
 
 def porcentaje_victorias_visitor_team(game_id):
-    home_team = int(df_rs_03.query("GAME_ID == " + str(game_id))['HOME_TEAM_ID'])
-    visitor_team = int(df_rs_03.query("GAME_ID == " + str(game_id))['VISITOR_TEAM_ID'])
-    
-    df_p_v_a = df_rs_03[(df_rs_03['GAME_ID'] <= game_id)]
+    home_team, visitor_team, df_p_v_a = home_visitor_df(game_id)
     
     df1v = df_p_v_a[(df_p_v_a['HOME_TEAM_ID'] == visitor_team)]
     df2v = df_p_v_a[(df_p_v_a['VISITOR_TEAM_ID'] == visitor_team)]
@@ -48,10 +62,7 @@ def porcentaje_victorias_visitor_team(game_id):
 
 
 def porcentaje_victorias_last5_home_team(game_id):
-    home_team = int(df_rs_03.query("GAME_ID == " + str(game_id))['HOME_TEAM_ID'])
-    visitor_team = int(df_rs_03.query("GAME_ID == " + str(game_id))['VISITOR_TEAM_ID'])
-    
-    df_p_v_a = df_rs_03[(df_rs_03['GAME_ID'] <= game_id)]
+    home_team, visitor_team, df_p_v_a = home_visitor_df(game_id)
     
     df1h = df_p_v_a[(df_p_v_a['HOME_TEAM_ID'] == home_team)]
     df2h = df_p_v_a[(df_p_v_a['VISITOR_TEAM_ID'] == home_team)]
@@ -83,10 +94,7 @@ def porcentaje_victorias_last5_home_team(game_id):
 
 
 def porcentaje_victorias_last5_visitor_team(game_id):
-    home_team = int(df_rs_03.query("GAME_ID == " + str(game_id))['HOME_TEAM_ID'])
-    visitor_team = int(df_rs_03.query("GAME_ID == " + str(game_id))['VISITOR_TEAM_ID'])
-    
-    df_p_v_a = df_rs_03[(df_rs_03['GAME_ID'] <= game_id)]
+    home_team, visitor_team, df_p_v_a = home_visitor_df(game_id)
     
     df1v = df_p_v_a[(df_p_v_a['HOME_TEAM_ID'] == visitor_team)]
     df2v = df_p_v_a[(df_p_v_a['VISITOR_TEAM_ID'] == visitor_team)]
@@ -118,10 +126,7 @@ def porcentaje_victorias_last5_visitor_team(game_id):
 
 
 def porcentaje_victorias_last10_home_team(game_id):
-    home_team = int(df_rs_03.query("GAME_ID == " + str(game_id))['HOME_TEAM_ID'])
-    visitor_team = int(df_rs_03.query("GAME_ID == " + str(game_id))['VISITOR_TEAM_ID'])
-    
-    df_p_v_a = df_rs_03[(df_rs_03['GAME_ID'] <= game_id)]
+    home_team, visitor_team, df_p_v_a = home_visitor_df(game_id)
     
     df1h = df_p_v_a[(df_p_v_a['HOME_TEAM_ID'] == home_team)]
     df2h = df_p_v_a[(df_p_v_a['VISITOR_TEAM_ID'] == home_team)]
@@ -153,10 +158,7 @@ def porcentaje_victorias_last10_home_team(game_id):
 
 
 def porcentaje_victorias_last10_visitor_team(game_id):
-    home_team = int(df_rs_03.query("GAME_ID == " + str(game_id))['HOME_TEAM_ID'])
-    visitor_team = int(df_rs_03.query("GAME_ID == " + str(game_id))['VISITOR_TEAM_ID'])
-    
-    df_p_v_a = df_rs_03[(df_rs_03['GAME_ID'] <= game_id)]
+    home_team, visitor_team, df_p_v_a = home_visitor_df(game_id)
     
     df1v = df_p_v_a[(df_p_v_a['HOME_TEAM_ID'] == visitor_team)]
     df2v = df_p_v_a[(df_p_v_a['VISITOR_TEAM_ID'] == visitor_team)]
@@ -188,10 +190,7 @@ def porcentaje_victorias_last10_visitor_team(game_id):
 
 
 def avg_points_home_team(game_id):
-    home_team = int(df_rs_03.query("GAME_ID == " + str(game_id))['HOME_TEAM_ID'])
-    visitor_team = int(df_rs_03.query("GAME_ID == " + str(game_id))['VISITOR_TEAM_ID'])
-    
-    df_p_v_a = df_rs_03[(df_rs_03['GAME_ID'] <= game_id)]
+    home_team, visitor_team, df_p_v_a = home_visitor_df(game_id)
     
     df1h = df_p_v_a[(df_p_v_a['HOME_TEAM_ID'] == home_team)]
     df2h = df_p_v_a[(df_p_v_a['VISITOR_TEAM_ID'] == home_team)]
@@ -211,10 +210,7 @@ def avg_points_home_team(game_id):
 
 
 def avg_points_visitor_team(game_id):
-    home_team = int(df_rs_03.query("GAME_ID == " + str(game_id))['HOME_TEAM_ID'])
-    visitor_team = int(df_rs_03.query("GAME_ID == " + str(game_id))['VISITOR_TEAM_ID'])
-   
-    df_p_v_a = df_rs_03[(df_rs_03['GAME_ID'] <= game_id)]
+    home_team, visitor_team, df_p_v_a = home_visitor_df(game_id)
     
     df1v = df_p_v_a[(df_p_v_a['HOME_TEAM_ID'] == visitor_team)]
     df2v = df_p_v_a[(df_p_v_a['VISITOR_TEAM_ID'] == visitor_team)]
@@ -234,10 +230,7 @@ def avg_points_visitor_team(game_id):
 
 
 def avg_points_last5_home_team(game_id):
-    home_team = int(df_rs_03.query("GAME_ID == " + str(game_id))['HOME_TEAM_ID'])
-    visitor_team = int(df_rs_03.query("GAME_ID == " + str(game_id))['VISITOR_TEAM_ID'])
-    
-    df_p_v_a = df_rs_03[(df_rs_03['GAME_ID'] <= game_id)]
+    home_team, visitor_team, df_p_v_a = home_visitor_df(game_id)
     
     df1h = df_p_v_a[(df_p_v_a['HOME_TEAM_ID'] == home_team)]
     df2h = df_p_v_a[(df_p_v_a['VISITOR_TEAM_ID'] == home_team)]
@@ -266,10 +259,7 @@ def avg_points_last5_home_team(game_id):
 
 
 def avg_points_last5_visitor_team(game_id):
-    home_team = int(df_rs_03.query("GAME_ID == " + str(game_id))['HOME_TEAM_ID'])
-    visitor_team = int(df_rs_03.query("GAME_ID == " + str(game_id))['VISITOR_TEAM_ID'])
-    
-    df_p_v_a = df_rs_03[(df_rs_03['GAME_ID'] <= game_id)]
+    home_team, visitor_team, df_p_v_a = home_visitor_df(game_id)
     
     df1v = df_p_v_a[(df_p_v_a['HOME_TEAM_ID'] == visitor_team)]
     df2v = df_p_v_a[(df_p_v_a['VISITOR_TEAM_ID'] == visitor_team)]
@@ -298,10 +288,7 @@ def avg_points_last5_visitor_team(game_id):
 
 
 def avg_points_last10_home_team(game_id):
-    home_team = int(df_rs_03.query("GAME_ID == " + str(game_id))['HOME_TEAM_ID'])
-    visitor_team = int(df_rs_03.query("GAME_ID == " + str(game_id))['VISITOR_TEAM_ID'])
-    
-    df_p_v_a = df_rs_03[(df_rs_03['GAME_ID'] <= game_id)]
+    home_team, visitor_team, df_p_v_a = home_visitor_df(game_id)
     
     df1h = df_p_v_a[(df_p_v_a['HOME_TEAM_ID'] == home_team)]
     df2h = df_p_v_a[(df_p_v_a['VISITOR_TEAM_ID'] == home_team)]
@@ -330,10 +317,7 @@ def avg_points_last10_home_team(game_id):
 
 
 def avg_points_last10_visitor_team(game_id):
-    home_team = int(df_rs_03.query("GAME_ID == " + str(game_id))['HOME_TEAM_ID'])
-    visitor_team = int(df_rs_03.query("GAME_ID == " + str(game_id))['VISITOR_TEAM_ID'])
-    
-    df_p_v_a = df_rs_03[(df_rs_03['GAME_ID'] <= game_id)]
+    home_team, visitor_team, df_p_v_a = home_visitor_df(game_id)
     
     df1v = df_p_v_a[(df_p_v_a['HOME_TEAM_ID'] == visitor_team)]
     df2v = df_p_v_a[(df_p_v_a['VISITOR_TEAM_ID'] == visitor_team)]
@@ -362,10 +346,7 @@ def avg_points_last10_visitor_team(game_id):
 
 
 def avg_fg_home_team(game_id):
-    home_team = int(df_rs_03.query("GAME_ID == " + str(game_id))['HOME_TEAM_ID'])
-    visitor_team = int(df_rs_03.query("GAME_ID == " + str(game_id))['VISITOR_TEAM_ID'])
-    
-    df_p_v_a = df_rs_03[(df_rs_03['GAME_ID'] <= game_id)]
+    home_team, visitor_team, df_p_v_a = home_visitor_df(game_id)
     
     df1h = df_p_v_a[(df_p_v_a['HOME_TEAM_ID'] == home_team)]
     df2h = df_p_v_a[(df_p_v_a['VISITOR_TEAM_ID'] == home_team)]
@@ -385,10 +366,7 @@ def avg_fg_home_team(game_id):
 
 
 def avg_fg_visitor_team(game_id):
-    home_team = int(df_rs_03.query("GAME_ID == " + str(game_id))['HOME_TEAM_ID'])
-    visitor_team = int(df_rs_03.query("GAME_ID == " + str(game_id))['VISITOR_TEAM_ID'])
-    
-    df_p_v_a = df_rs_03[(df_rs_03['GAME_ID'] <= game_id)]
+    home_team, visitor_team, df_p_v_a = home_visitor_df(game_id)
     
     df1v = df_p_v_a[(df_p_v_a['HOME_TEAM_ID'] == visitor_team)]
     df2v = df_p_v_a[(df_p_v_a['VISITOR_TEAM_ID'] == visitor_team)]
@@ -408,10 +386,7 @@ def avg_fg_visitor_team(game_id):
 
 
 def avg_fg_last5_home_team(game_id):
-    home_team = int(df_rs_03.query("GAME_ID == " + str(game_id))['HOME_TEAM_ID'])
-    visitor_team = int(df_rs_03.query("GAME_ID == " + str(game_id))['VISITOR_TEAM_ID'])
-    
-    df_p_v_a = df_rs_03[(df_rs_03['GAME_ID'] <= game_id)]
+    home_team, visitor_team, df_p_v_a = home_visitor_df(game_id)
     
     df1h = df_p_v_a[(df_p_v_a['HOME_TEAM_ID'] == home_team)]
     df2h = df_p_v_a[(df_p_v_a['VISITOR_TEAM_ID'] == home_team)]
@@ -441,10 +416,7 @@ def avg_fg_last5_home_team(game_id):
 
 
 def avg_fg_last5_visitor_team(game_id):
-    home_team = int(df_rs_03.query("GAME_ID == " + str(game_id))['HOME_TEAM_ID'])
-    visitor_team = int(df_rs_03.query("GAME_ID == " + str(game_id))['VISITOR_TEAM_ID'])
-    
-    df_p_v_a = df_rs_03[(df_rs_03['GAME_ID'] <= game_id)]
+    home_team, visitor_team, df_p_v_a = home_visitor_df(game_id)
     
     df1v = df_p_v_a[(df_p_v_a['HOME_TEAM_ID'] == visitor_team)]
     df2v = df_p_v_a[(df_p_v_a['VISITOR_TEAM_ID'] == visitor_team)]
@@ -473,10 +445,7 @@ def avg_fg_last5_visitor_team(game_id):
 
 
 def avg_fg_last10_home_team(game_id):
-    home_team = int(df_rs_03.query("GAME_ID == " + str(game_id))['HOME_TEAM_ID'])
-    visitor_team = int(df_rs_03.query("GAME_ID == " + str(game_id))['VISITOR_TEAM_ID'])
-    
-    df_p_v_a = df_rs_03[(df_rs_03['GAME_ID'] <= game_id)]
+    home_team, visitor_team, df_p_v_a = home_visitor_df(game_id)
     
     df1h = df_p_v_a[(df_p_v_a['HOME_TEAM_ID'] == home_team)]
     df2h = df_p_v_a[(df_p_v_a['VISITOR_TEAM_ID'] == home_team)]
@@ -505,10 +474,7 @@ def avg_fg_last10_home_team(game_id):
 
 
 def avg_fg_last10_visitor_team(game_id):
-    home_team = int(df_rs_03.query("GAME_ID == " + str(game_id))['HOME_TEAM_ID'])
-    visitor_team = int(df_rs_03.query("GAME_ID == " + str(game_id))['VISITOR_TEAM_ID'])
-    
-    df_p_v_a = df_rs_03[(df_rs_03['GAME_ID'] <= game_id)]
+    home_team, visitor_team, df_p_v_a = home_visitor_df(game_id)
     
     df1v = df_p_v_a[(df_p_v_a['HOME_TEAM_ID'] == visitor_team)]
     df2v = df_p_v_a[(df_p_v_a['VISITOR_TEAM_ID'] == visitor_team)]
@@ -537,10 +503,7 @@ def avg_fg_last10_visitor_team(game_id):
 
 
 def avg_fg3_home_team(game_id):
-    home_team = int(df_rs_03.query("GAME_ID == " + str(game_id))['HOME_TEAM_ID'])
-    visitor_team = int(df_rs_03.query("GAME_ID == " + str(game_id))['VISITOR_TEAM_ID'])
-    
-    df_p_v_a = df_rs_03[(df_rs_03['GAME_ID'] <= game_id)]
+    home_team, visitor_team, df_p_v_a = home_visitor_df(game_id)
     
     df1h = df_p_v_a[(df_p_v_a['HOME_TEAM_ID'] == home_team)]
     df2h = df_p_v_a[(df_p_v_a['VISITOR_TEAM_ID'] == home_team)]
@@ -560,10 +523,7 @@ def avg_fg3_home_team(game_id):
 
 
 def avg_fg3_visitor_team(game_id):
-    home_team = int(df_rs_03.query("GAME_ID == " + str(game_id))['HOME_TEAM_ID'])
-    visitor_team = int(df_rs_03.query("GAME_ID == " + str(game_id))['VISITOR_TEAM_ID'])
-    
-    df_p_v_a = df_rs_03[(df_rs_03['GAME_ID'] <= game_id)]
+    home_team, visitor_team, df_p_v_a = home_visitor_df(game_id)
     
     df1v = df_p_v_a[(df_p_v_a['HOME_TEAM_ID'] == visitor_team)]
     df2v = df_p_v_a[(df_p_v_a['VISITOR_TEAM_ID'] == visitor_team)]
@@ -583,10 +543,7 @@ def avg_fg3_visitor_team(game_id):
 
 
 def avg_fg3_last5_home_team(game_id):
-    home_team = int(df_rs_03.query("GAME_ID == " + str(game_id))['HOME_TEAM_ID'])
-    visitor_team = int(df_rs_03.query("GAME_ID == " + str(game_id))['VISITOR_TEAM_ID'])
-    
-    df_p_v_a = df_rs_03[(df_rs_03['GAME_ID'] <= game_id)]
+    home_team, visitor_team, df_p_v_a = home_visitor_df(game_id)
     
     df1h = df_p_v_a[(df_p_v_a['HOME_TEAM_ID'] == home_team)]
     df2h = df_p_v_a[(df_p_v_a['VISITOR_TEAM_ID'] == home_team)]
@@ -615,10 +572,7 @@ def avg_fg3_last5_home_team(game_id):
 
 
 def avg_fg3_last5_visitor_team(game_id):
-    home_team = int(df_rs_03.query("GAME_ID == " + str(game_id))['HOME_TEAM_ID'])
-    visitor_team = int(df_rs_03.query("GAME_ID == " + str(game_id))['VISITOR_TEAM_ID'])
-    
-    df_p_v_a = df_rs_03[(df_rs_03['GAME_ID'] <= game_id)]
+    home_team, visitor_team, df_p_v_a = home_visitor_df(game_id)
     
     df1v = df_p_v_a[(df_p_v_a['HOME_TEAM_ID'] == visitor_team)]
     df2v = df_p_v_a[(df_p_v_a['VISITOR_TEAM_ID'] == visitor_team)]
@@ -647,10 +601,7 @@ def avg_fg3_last5_visitor_team(game_id):
 
 
 def avg_fg3_last10_home_team(game_id):
-    home_team = int(df_rs_03.query("GAME_ID == " + str(game_id))['HOME_TEAM_ID'])
-    visitor_team = int(df_rs_03.query("GAME_ID == " + str(game_id))['VISITOR_TEAM_ID'])
-    
-    df_p_v_a = df_rs_03[(df_rs_03['GAME_ID'] <= game_id)]
+    home_team, visitor_team, df_p_v_a = home_visitor_df(game_id)
     
     df1h = df_p_v_a[(df_p_v_a['HOME_TEAM_ID'] == home_team)]
     df2h = df_p_v_a[(df_p_v_a['VISITOR_TEAM_ID'] == home_team)]
@@ -680,10 +631,7 @@ def avg_fg3_last10_home_team(game_id):
 
 
 def avg_fg3_last10_visitor_team(game_id):
-    home_team = int(df_rs_03.query("GAME_ID == " + str(game_id))['HOME_TEAM_ID'])
-    visitor_team = int(df_rs_03.query("GAME_ID == " + str(game_id))['VISITOR_TEAM_ID'])
-    
-    df_p_v_a = df_rs_03[(df_rs_03['GAME_ID'] <= game_id)]
+    home_team, visitor_team, df_p_v_a = home_visitor_df(game_id)
     
     df1v = df_p_v_a[(df_p_v_a['HOME_TEAM_ID'] == visitor_team)]
     df2v = df_p_v_a[(df_p_v_a['VISITOR_TEAM_ID'] == visitor_team)]
