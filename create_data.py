@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
 
-# Funciones para la creacoin de los datos
+# Funciones para la creación de los datos
 
 def home_visitor_df(game_id):
     df = pd.read_csv('df_merged_renamed_droped_sorted_2_rs.csv')
@@ -16,10 +16,6 @@ def home_visitor_df(game_id):
 
 
 def porcentaje_victorias_home_team(game_id):
-    #home_team = int(df_rs_03.query("GAME_ID == " + str(game_id))['HOME_TEAM_ID'])
-    #visitor_team = int(df_rs_03.query("GAME_ID == " + str(game_id))['VISITOR_TEAM_ID'])
-    #df_p_v_a = df_rs_03[(df_rs_03['GAME_ID'] <= game_id)]
-                 
     home_team, visitor_team, df_p_v_a = home_visitor_df(game_id)
     
     df1h = df_p_v_a[(df_p_v_a['HOME_TEAM_ID'] == home_team)]
