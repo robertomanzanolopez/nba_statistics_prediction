@@ -5,6 +5,8 @@ df_complete.csv
 __pycache__/
 df_merged_renamed_droped_sorted_rs.csv
 df_merged_renamed_droped_sorted_2_rs.csv
+df_params_scores_grid.csv
+df_params_scores_random.csv
 df_all_rs.csv
 df_all_metrics.csv
 metrics_results_kn.csv
