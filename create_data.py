@@ -4,7 +4,7 @@ import numpy as np
 # Funciones para la creación de los datos
 
 def home_visitor_df(game_id):
-    df = pd.read_csv('df_merged_renamed_droped_sorted_2_rs.csv')
+    df = pd.read_csv('data/df_merged_renamed_droped_sorted_2_rs.csv')
     df = df.drop('Unnamed: 0', axis=1)
     
     home_team = int(df.query("GAME_ID == " + str(game_id))['HOME_TEAM_ID'])
