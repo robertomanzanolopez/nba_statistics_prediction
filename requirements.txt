@@ -1,0 +1,21 @@
+# Servidor Ubuntu
+
+# Python 3
+sudo apt update
+sudo apt -y upgrade
+sudo apt install -y python3-pip
+sudo apt install build-essential libssl-dev libffi-dev python3-dev
+
+# Jupyter Notebook
+sudo apt update; sudo apt upgrade
+sudo apt install python3-pip python3-dev
+sudo -H pip3 install --upgrade pip
+pip --version
+sudo -H pip3 install virtualenv
+mkdir jupyter
+cd jupyter
+virtualenv jupyter
+source jupyter/bin/activate
+pip install jupyter
+
+# Tableau lastest version
