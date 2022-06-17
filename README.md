@@ -20,7 +20,7 @@ El objectivo de este trabajo es realizar un análisis de las principales estadí
 
     
 #### 1. Origen de los datos:
-Para llevar acabo el trabajo los datos han sido obtenidos de un repositorio en kaggle (https://www.kaggle.com/nathanlauga/nba-games/version/8?select=games.csv), obtenidos previamente de la API que proporciona la propia NBA.
+Para llevar acabo el trabajo los datos han sido obtenidos de un repositorio en kaggle (https://www.kaggle.com/nathanlauga/nba-games/version/8?select=games.csv y https://www.kaggle.com/datasets/nathanlauga/nba-games/version/8?select=teams.csv), obtenidos previamente de la API que proporciona la propia NBA.
     
 #### 2. Herramientas utilizadas:
 - Jupyter notebooks: 
@@ -96,29 +96,29 @@ Ha sido el medio escogido para la visualización de los datos.
  
   - avg_points_last10_visitor_team: Calcula la media de puntos que lleva en los últimos 10 partidos para el equipo que juega como visitante.
  
-  - avg_fg_home_team: Calcula la media de del porcentaje de acierto en tiros de campo que lleva en toda la temporada hasta ese partido para el equipo que juega en casa.
+  - avg_fg_home_team: Calcula la media del porcentaje de acierto en tiros de campo que lleva en toda la temporada hasta ese partido para el equipo que juega en casa.
  
-  - avg_fg_visitor_team: Calcula la media de del porcentaje de acierto en tiros de campo que lleva en toda la temporada hasta ese partido para el equipo que juega como visitante.
+  - avg_fg_visitor_team: Calcula la media del porcentaje de acierto en tiros de campo que lleva en toda la temporada hasta ese partido para el equipo que juega como visitante.
  
-  - avg_fg_last5_home_team: Calcula la media de del porcentaje de acierto en tiros de campo de los últimos 5 partidos para el equipo que juega en casa.
+  - avg_fg_last5_home_team: Calcula la media del porcentaje de acierto en tiros de campo de los últimos 5 partidos para el equipo que juega en casa.
  
-  - avg_fg_last5_visitor_team: Calcula la media de del porcentaje de acierto en tiros de campo de los últimos 5 partidos para el equipo que juega como visitante.
+  - avg_fg_last5_visitor_team: Calcula la media del porcentaje de acierto en tiros de campo de los últimos 5 partidos para el equipo que juega como visitante.
  
-  - avg_fg_last10_home_team: Calcula la media de del porcentaje de acierto en tiros de campo de los últimos 10 partidos para el equipo que juega en casa.
+  - avg_fg_last10_home_team: Calcula la media del porcentaje de acierto en tiros de campo de los últimos 10 partidos para el equipo que juega en casa.
  
-  - avg_fg_last10_visitor_team: Calcula la media de del porcentaje de acierto en tiros de campo de los últimos 10 partidos para el equipo que juega como visitante.
+  - avg_fg_last10_visitor_team: Calcula la media del porcentaje de acierto en tiros de campo de los últimos 10 partidos para el equipo que juega como visitante.
  
-  - avg_fg3_home_team: Calcula la media de del porcentaje de acierto en tiros de tres puntos que lleva en toda la temporada hasta ese partido para el equipo que juega en casa.
+  - avg_fg3_home_team: Calcula la media del porcentaje de acierto en tiros de tres puntos que lleva en toda la temporada hasta ese partido para el equipo que juega en casa.
  
-  - avg_fg3_visitor_team: Calcula la media de del porcentaje de acierto en tiros de tres puntos que lleva en toda la temporada hasta ese partido para el equipo que juega como visitante.
+  - avg_fg3_visitor_team: Calcula la media del porcentaje de acierto en tiros de tres puntos que lleva en toda la temporada hasta ese partido para el equipo que juega como visitante.
  
-  - avg_fg3_last5_home_team: Calcula la media de del porcentaje de acierto en tiros de tres puntos de los últimos 5 partidos para el equipo que juega en casa.
+  - avg_fg3_last5_home_team: Calcula la media del porcentaje de acierto en tiros de tres puntos de los últimos 5 partidos para el equipo que juega en casa.
  
-  - avg_fg3_last5_visitor_team: Calcula la media de del porcentaje de acierto en tiros de tres puntos de los últimos 5 partidos para el equipo que juega como visitante.
+  - avg_fg3_last5_visitor_team: Calcula la media del porcentaje de acierto en tiros de tres puntos de los últimos 5 partidos para el equipo que juega como visitante.
  
-  - avg_fg3_last10_home_team: Calcula la media de del porcentaje de acierto en tiros de tres puntos de los últimos 10 partidos para el equipo que juega en casa.
+  - avg_fg3_last10_home_team: Calcula la media del porcentaje de acierto en tiros de tres puntos de los últimos 10 partidos para el equipo que juega en casa.
  
-  - avg_fg3_last10_visitor_team: Calcula la media de del porcentaje de acierto en tiros de tres puntos de los últimos 10 partidos para el equipo que juega como visitante.
+  - avg_fg3_last10_visitor_team: Calcula la media del porcentaje de acierto en tiros de tres puntos de los últimos 10 partidos para el equipo que juega como visitante.
 
 
 - modifing_dataframe2.ipynb: 
@@ -200,23 +200,19 @@ Ha sido el medio escogido para la visualización de los datos.
   
    - Porcentaje de acierto en tiros libres del equipo de casa, del equipo que juega como visitante y la media.
    
+ - Distribución de los datos.
+   
  - Exploración mas detallada de las columnas con mayor correlación:
  
-   - Correlación entre puntos y victorias
-   
-   - Correlación entre asistencias y victorias
-   
-   - Correlación entre asistencias y puntos
-   
-   - Correlación entre rebotes y victorias
-   
-   - Correlación entre %fg y victorias
-   
    - Correlación entre %fg y puntos
    
-   - Correlación entre %fg3 y victorias
+   - Correlación entre %fg y rebotes
    
    - Correlación entre %fg3 y puntos
+   
+   - Correlación entre la media de puntos los últimos 5 partidos y los últimos 10
+   
+   - Correlación entre asistencias y puntos
 
  - Conclusiones
  
@@ -240,8 +236,6 @@ Ha sido el medio escogido para la visualización de los datos.
    - GridSearchCV
    
    - RandomSearchCV
-   
-   - 
 
  - Modelo generado: modelo_final.pkl
  
